@@ -1,0 +1,51 @@
+{%extends 'layout.html'%}
+
+{% block content%}
+
+{% load static %}
+
+<header class="row bg-white my-auto">
+    <div class="col-md-30 card-project">
+<img src="{% static 'porfolio/Portfolio.jpg'%}" alt="">
+    </div>
+
+    <div class="col-md-30 my-auto card-project">
+        <h1>I am <strong>Giovanni Caceres</strong></h1>
+        <h3>I am a Python fullstack Developer</h3>
+        <p>
+            Yovito es, para muchos, un icono moderno y casi un ídolo al que adorar. 
+            El cofundador de Apple y genio de la informática se convirtió en vida en un hombre admirado 
+            por cientos de miles de personas. Sus ideas innovadoras, 
+            que fundaron los principios de la tecnología de la que hoy disponemos,
+            y el estilo teatral y diferente que daba a sus campañas de publicidad hizo que sus productos
+            trascendieran del simple ordenador, móvil o reproductor de música y
+            llegaran a formar parte de la identidad de la persona que lo posee.
+            Yovito fue el rostro visible de una revolución que, aún hoy, 
+            solo está dando sus primeros pasos. Aquí os contamos algunos datos curiosos sobre la vida de este gurú moderno.
+        </p>
+        <a href="{% static 'porfolio/python.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3"> Download CV </a>
+    </div>
+</header>
+
+<div class="row my-4 tex-center">
+    <h2>My projects</h2>
+
+    {% for project in project %}
+    <div class="col-md-4">
+        <div class="card bg-aliceblue card-project">
+            <div class="card-body">
+                <h1>{{project.title}}</h1>
+                <p>{{project.description}}</p>
+                <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top">
+                <br>
+                {%if project.url%}
+                <a href="{{project.url}}">{{project.url}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div> 
+    {% endfor %}
+</div>
+ 
+{% endblock %}
+
